@@ -1,0 +1,338 @@
+CREATE TABLE IF NOT EXISTS `layouts` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `img` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `layouts` (`id`, `name`, `img`, `created_at`, `updated_at`) VALUES
+(1, 'Theatre', 'Theatre.png', '2018-01-26 20:21:00', '2018-01-26 20:21:00'),
+(2, 'Banquet', 'Banquet.png', '2018-01-29 16:29:00', '2018-01-29 16:29:00'),
+(3, 'Classroom', 'Classroom.png', '2018-01-29 16:29:00', '2018-01-29 16:29:00'),
+(4, 'Cabaret', 'Cabaret.png', '2018-01-29 16:29:00', '2018-01-29 16:29:00'),
+(5, 'Boardroom', 'Boardroom.png', '2018-01-29 16:29:00', '2018-01-29 16:29:00'),
+(6, 'U Style', 'U-style.png', '2018-01-29 16:29:00', '2018-01-29 16:29:00'),
+(7, 'Semi Circle', 'Semi-circle.png', '2018-01-29 16:29:00', '2018-01-29 16:29:00'),
+(8, 'Circle', 'Circle.png', '2018-01-29 16:29:00', '2018-01-29 16:29:00');
+
+CREATE TABLE IF NOT EXISTS `login` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `logo` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `mail` (
+  `id` int(11) NOT NULL,
+  `mail_host` varchar(191) NOT NULL,
+  `mail_port` varchar(191) NOT NULL,
+  `smtp_email` varchar(191) NOT NULL,
+  `password` varchar(191) NOT NULL,
+  `from_name` varchar(191) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `meetings` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `start_date` date NOT NULL,
+  `start_time` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `end_date` date NOT NULL,
+  `end_time` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `people_notify` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` int(11) NOT NULL DEFAULT '1',
+  `room` int(10) UNSIGNED NOT NULL,
+  `layout` int(10) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `meeting_resources` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `meeting_id` int(10) UNSIGNED NOT NULL,
+  `resources_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_resets_table', 1),
+(9, '2018_01_25_191846_create_rooms_table', 2),
+(10, '2018_01_25_201221_create_layouts_table', 2),
+(11, '2018_01_25_204903_create_resources_table', 3),
+(12, '2018_01_25_194145_create_rooms_layouts_table', 4),
+(14, '2018_01_25_202032_create_meetings_table', 6),
+(15, '2018_01_25_205317_create_meeting_resources_table', 7),
+(16, '2018_02_08_200541_create_schedules_table', 8),
+(18, '2018_02_08_223845_create_logins_table', 9);
+
+CREATE TABLE IF NOT EXISTS `password_resets` (
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `resources` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `icon` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` int(11) NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `resources` (`id`, `name`, `description`, `icon`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Projector', 'For small groups', 'mdi-projector', 1, '2018-01-30 14:28:00', '2018-01-30 14:28:00'),
+(2, 'Audio (Horns)', 'Brand Sony', 'mdi-bullhorn', 1, '2018-01-30 14:28:00', '2018-01-30 14:28:00'),
+(3, 'TV Plasma', 'Plasma TV with support', 'mdi-television', 1, '2018-01-30 14:28:00', '2018-01-30 14:28:00'),
+(4, 'Wifi (internet)', 'For small groups', 'mdi-wifi', 1, '2018-01-30 14:28:00', '2018-01-30 14:28:00'),
+(5, 'Audio (Mic)', 'For small groups', 'mdi-microphone-variant', 1, '2018-01-30 14:28:00', '2018-01-30 14:28:00'),
+(7, 'Coffee/Water', 'For small groups', 'mdi-coffee', 1, '2018-02-23 14:19:00', '2018-02-23 14:19:00'),
+(9, 'Prueba recurso', 'prueba', 'mdi-coffee', 1, '2018-02-23 13:23:00', '2018-02-23 13:23:00'),
+(10, 'Prueba 2', 'Cambio prueba', 'mdi-television', 0, '2018-02-24 05:44:03', '2018-02-27 13:29:48');
+
+CREATE TABLE IF NOT EXISTS `rooms` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `color` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `capacity` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `opening_time` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `closing_time` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` int(11) NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `rooms_layouts` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `room_id` int(10) UNSIGNED NOT NULL,
+  `layout_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `schedules` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `hours` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `schedules` (`id`, `hours`, `created_at`, `updated_at`) VALUES
+(1, '00:00', '2018-02-08 20:14:00', '2018-02-08 20:14:00'),
+(2, '00:15', '2018-02-08 20:14:00', '2018-02-08 20:14:00'),
+(3, '00:30', '2018-02-08 20:14:00', '2018-02-08 20:14:00'),
+(4, '00:45', '2018-02-08 20:14:00', '2018-02-08 20:14:00'),
+(5, '01:00', '2018-02-08 20:14:00', '2018-02-08 20:14:00'),
+(6, '01:15', '2018-02-08 20:14:00', '2018-02-08 20:14:00'),
+(7, '01:30', '2018-02-08 20:14:00', '2018-02-08 20:14:00'),
+(8, '01:45', '2018-02-08 20:14:00', '2018-02-08 20:14:00'),
+(9, '02:00', '2018-02-08 20:14:00', '2018-02-08 20:14:00'),
+(10, '02:15', '2018-02-08 20:14:00', '2018-02-08 20:14:00'),
+(11, '02:30', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(12, '02:45', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(13, '03:00', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(14, '03:15', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(15, '03:30', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(16, '03:45', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(17, '04:00', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(18, '04:15', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(19, '04:30', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(20, '04:45', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(21, '05:00', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(22, '05:15', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(23, '05:30', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(24, '05:45', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(25, '06:00', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(26, '06:15', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(27, '06:30', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(28, '06:45', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(29, '07:00', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(30, '07:15', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(31, '07:30', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(32, '07:45', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(33, '08:00', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(34, '08:15', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(35, '08:30', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(36, '08:45', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(37, '09:00', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(38, '09:15', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(39, '09:30', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(40, '09:45', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(41, '10:00', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(42, '10:15', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(43, '10:30', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(44, '10:45', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(45, '11:00', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(46, '11:15', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(47, '11:30', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(48, '11:45', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(49, '12:00', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(50, '12:15', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(51, '12:30', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(52, '12:45', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(53, '13:00', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(54, '13:15', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(55, '13:30', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(56, '13:45', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(57, '14:00', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(58, '14:15', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(59, '14:30', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(60, '14:45', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(61, '15:00', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(62, '15:15', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(63, '15:30', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(64, '15:45', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(65, '16:00', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(66, '16:15', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(67, '16:30', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(68, '16:45', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(69, '17:00', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(70, '17:15', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(71, '17:30', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(72, '17:45', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(73, '18:00', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(74, '18:15', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(75, '18:30', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(76, '18:45', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(77, '19:00', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(78, '19:15', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(79, '19:30', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(80, '19:45', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(81, '20:00', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(82, '20:15', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(83, '20:30', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(84, '20:45', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(85, '21:00', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(86, '21:15', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(87, '21:30', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(88, '21:45', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(89, '22:00', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(90, '22:15', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(91, '22:30', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(92, '22:45', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(93, '23:00', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(94, '23:15', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(95, '23:30', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(96, '23:45', '2018-02-09 02:14:00', '2018-02-09 02:14:00'),
+(97, '24:00', '2018-02-09 02:14:00', '2018-02-09 02:14:00');
+
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` int(11) NOT NULL DEFAULT '1',
+  `role` tinyint(4) NOT NULL DEFAULT '0',
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+ALTER TABLE `layouts`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `login`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `mail`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `meetings`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `meetings_room_foreign` (`room`),
+  ADD KEY `meetings_layout_foreign` (`layout`),
+  ADD KEY `meetings_user_id_foreign` (`user_id`);
+
+ALTER TABLE `meeting_resources`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `meeting_resources_meeting_id_foreign` (`meeting_id`),
+  ADD KEY `meeting_resources_resources_id_foreign` (`resources_id`);
+
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `password_resets`
+  ADD KEY `password_resets_email_index` (`email`);
+
+ALTER TABLE `resources`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `rooms`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `rooms_layouts`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `rooms_layouts_room_id_foreign` (`room_id`),
+  ADD KEY `rooms_layouts_layout_id_foreign` (`layout_id`);
+
+ALTER TABLE `schedules`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_username_unique` (`username`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);
+
+
+ALTER TABLE `layouts`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+ALTER TABLE `login`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `mail`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `meetings`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `meeting_resources`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+ALTER TABLE `resources`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+ALTER TABLE `rooms`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `rooms_layouts`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `schedules`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+
+ALTER TABLE `users`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `meetings`
+  ADD CONSTRAINT `meetings_layout_foreign` FOREIGN KEY (`layout`) REFERENCES `layouts` (`id`),
+  ADD CONSTRAINT `meetings_room_foreign` FOREIGN KEY (`room`) REFERENCES `rooms` (`id`),
+  ADD CONSTRAINT `meetings_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+ALTER TABLE `meeting_resources`
+  ADD CONSTRAINT `meeting_resources_meeting_id_foreign` FOREIGN KEY (`meeting_id`) REFERENCES `meetings` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `meeting_resources_resources_id_foreign` FOREIGN KEY (`resources_id`) REFERENCES `resources` (`id`) ON DELETE CASCADE;
+
+ALTER TABLE `rooms_layouts`
+  ADD CONSTRAINT `rooms_layouts_layout_id_foreign` FOREIGN KEY (`layout_id`) REFERENCES `layouts` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `rooms_layouts_room_id_foreign` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`id`) ON DELETE CASCADE;
+COMMIT;

@@ -1,0 +1,80 @@
+body{
+	font-family: 'Heebo', sans-serif !important;
+	background-color: #0971ba !important;
+	background-image: url("../img/background_irooms.png");
+	color: #fff !important;
+	background-size: cover;
+	background-position: center center;
+}
+.header{
+	padding-top: 5em;
+	text-align: center;
+	padding-bottom: 1.5em;
+}
+.header img{
+	width: 41%;
+}
+.header p{
+	padding-top: 1.5em;
+	color: #96c2e0;
+	font-size: 15px;
+}
+.login-form{
+	text-align: center;
+}
+.form-header{
+	background-color: #fff !important;
+	border: none !important;
+	font-weight: 500;
+	color: #506078 !important;
+	padding: 25px 15px 5px !important;
+}
+.form-group .input-s input{
+	border: 1px solid #bdd4e7;
+	color: #506078;
+}
+/*.form-group .input-s input::placeholder { 
+    color: #b4c8d7;
+}
+
+.form-group .input-s input:-ms-input-placeholder {
+    color: #b4c8d7;
+}
+
+.form-group .input-s input::-ms-input-placeholder { 
+    color: #b4c8d7;
+}*/
+.form-body{
+	padding-bottom: 5px;
+}
+.form-group .but button{
+	background-color: #4ece3d;
+	border-color: #4ece3d;
+	width: 85%;
+}
+.form-group .help{
+	margin-top: 10px;
+}
+.form-group .help .checkbox{
+	font-size: 13px;
+	color: #85909c;
+}
+.form-group .help input[type=checkbox]{
+	margin: 2px -17px;
+}
+.form-group .help a.btn{
+	font-size: 13px;
+	color: #3aabf1;
+}
+.form-group .help a.btn:hover{
+	text-decoration: none;
+	color: #3e9bd1;
+}
+#reset-txt{
+	font-size: 13px;
+	color: #85909c;
+	padding-bottom: 10px;
+}
+.success{
+	font-size: 13px;
+}

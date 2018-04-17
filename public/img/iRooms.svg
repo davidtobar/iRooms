@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="125px" height="126px" viewBox="0 0 125 126" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>Logo iRooms</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="0 0.577346136 129.776602 0.577346136 129.776602 40.9656957 0 40.9656957"></polygon>
+    </defs>
+    <g id="1.1.2-Monthly---Advanced" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-31.000000, -15.000000)">
+        <g id="Logo-iRooms" transform="translate(30.000000, 15.000000)">
+            <g id="Group-2" transform="translate(0.000000, 84.576359)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="Clip-1"></g>
+                <text id="iRooms" mask="url(#mask-2)" font-family=".SFNSDisplay, .SF NS Display" font-size="39.9933641" font-weight="normal" fill="#FEFEFE">
+                    <tspan x="-0.000631067961" y="39.5773461">i</tspan>
+                    <tspan x="8.53310922" y="39.5773461" letter-spacing="-0.319946923">R</tspan>
+                    <tspan x="32.5450625" y="39.5773461">ooms</tspan>
+                </text>
+            </g>
+            <g id="Group" transform="translate(29.660194, 0.000000)" fill="#FEFEFE">
+                <polygon id="Fill-3" points="35.2294951 39.9138495 16.4047379 29.0437039 16.3776019 29.0601117 16.3776019 42.0184612 35.2294951 52.9069078 54.078233 42.0184612 54.078233 29.0550631 54.0555146 29.0411796"></polygon>
+                <path d="M35.2293689,0.000189320388 L0.626650485,19.9772767 L0.626650485,59.9320825 L35.2293689,79.9091699 L69.828932,59.9320825 L69.828932,32.9280534 L69.828932,19.9772767 L58.5795146,13.4772767 L35.2293689,0.000189320388 Z M11.8792233,53.4358689 L11.8779612,39.424267 L11.8779612,26.4741214 L35.2293689,12.9888301 L58.5422816,26.4514029 L58.5795146,26.4741214 L58.5795146,39.424267 L58.5795146,53.4358689 L35.2293689,66.9161117 L11.8792233,53.4358689 Z" id="Fill-4"></path>
+            </g>
+        </g>
+    </g>
+</svg>
